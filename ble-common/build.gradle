@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
-/*
+apply plugin: 'android-maven'
+
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 ext {
-    PUBLISH_GROUP_ID = 'no.nordicsemi.android'
+    PUBLISH_GROUP_ID = 'ai.longev.android'
     PUBLISH_ARTIFACT_ID = 'ble-common'
-    PUBLISH_VERSION = '2.1.1'
+    PUBLISH_VERSION = '2.1.3'
 
     bintrayRepo = 'android'
     bintrayName = 'ble-common-library'
@@ -17,19 +18,19 @@ ext {
     libraryName = 'BLE Common Library'
     libraryDescription = 'Bluetooth Low Energy library for Android'
 
-    issuesUrl = 'https://github.com/NordicSemiconductor/Android-BLE-Common-Library/issues'
-    siteUrl = 'https://github.com/NordicSemiconductor/Android-BLE-Common-Library'
-    gitUrl = 'https://github.com/NordicSemiconductor/Android-BLE-Common-Library.git'
+    issuesUrl = 'https://github.com/ndrd/Android-BLE-Common-Library/issues'
+    siteUrl = 'https://github.com/ndrd/Android-BLE-Common-Library'
+    gitUrl = 'https://github.com/ndrd/Android-BLE-Common-Library.git'
 
-    developerId = 'philips77'
-    developerName = 'Aleksander Nowakowski'
-    developerEmail = 'aleksander.nowakowski@nordicsemi.no'
+    developerId = 'ndrd'
+    developerName = 'Jonathan Andrade'
+    developerEmail = 'j@longev.ai'
 
     licenseName = 'The BSD 3-Clause License'
     licenseUrl = 'http://opensource.org/licenses/BSD-3-Clause'
     allLicenses = ["BSD 3-Clause"]
 }
-*/
+
 android {
     compileSdkVersion 28
 
@@ -37,7 +38,7 @@ android {
         minSdkVersion 18
         targetSdkVersion 28
         versionCode 28
-        versionName "2.1.1"
+        versionName "2.1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,14 +58,13 @@ android {
 
 dependencies {
     // Import the BLE Library
-    api 'no.nordicsemi.android:ble:2.1.1'
-
+    api 'ai.longev.android:ble:2.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
 }
 
-/*
+
 // The following script creates a POM file required to publish on Maven Central
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 
@@ -72,7 +72,7 @@ apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.
 apply from: 'https://raw.githubusercontent.com/ArthurHub/release-android-library/master/android-release-aar.gradle'
 
 // The following link publishes the library to jcenter. It does not handle the userOrg, so it has been copied and modified below.
-//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 
 // Copied from https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle
 version = libraryVersion
@@ -100,7 +100,7 @@ bintray {
         version {
             desc = libraryDescription
             gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
+                sign = false //Determines whether to GPG sign the files. The default is false
                 passphrase = properties.getProperty("bintray.gpg.password")
                 //Optional. The passphrase for GPG signing'
             }
@@ -115,4 +115,3 @@ if (JavaVersion.current().isJava8Compatible()) {
         }
     }
 }
-*/
